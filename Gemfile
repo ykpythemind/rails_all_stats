@@ -4,3 +4,4 @@ source "https://rubygems.org"
 
 
 gem "prism"
+gem "rails_stats"
