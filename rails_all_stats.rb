@@ -46,7 +46,7 @@ end
   case a[:strategy]
   when :rails_runner
     with_tmp_file(rails_root, a[:script]) do
-      rails_command = "bin/rails runner"
+      rails_command = "bin/rails"
       rails_command = ENV["RAILS_COMMAND"] if ENV["RAILS_COMMAND"]
       run("#{rails_command} r tmp/#{a[:script]}", rails_root)
     end
