@@ -19,6 +19,8 @@ class ClassVisitor < Prism::Visitor
     super
     @current_class = nil
   end
+
+  def result = map
 end
 
 rails_root = ARGV[0]
@@ -33,7 +35,7 @@ Dir.glob(Pathname.new(rails_root).join("app/models/**/*.rb")).each do |file|
   parse_result.value.accept(visitor)
 end
 
-rows = visitor.map {  |k, v| [k, v] }.sort_by { _2 }.reverse
+rows = visitor.result.map { |k, v| [k, v] }.sort_by { _2 }.reverse
 rows = rows.take(10) unless ENV["VERBOSE"] # top 10
 
 longest = rows.max_by { _1[0].length }[0].length + 1
