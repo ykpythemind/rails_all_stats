@@ -66,12 +66,12 @@ def call
     unless versions.has_key?(version)
       # gemfile.lockに初出したタイミングでそのバージョンに切り替わったと見なすこととする
       versions[version] = true
-      s = "#{log[:date]} #{version}"
-      s += " #{log[:revision]}" if ENV['INCLUDE_REVISION']
+      s = "#{log[:date]}\t#{version}"
+      s += "\t#{log[:revision]}" if ENV['INCLUDE_REVISION']
 
       loc, testloc = stats_at(git_root: Dir.pwd, git_revision: log[:revision])
 
-      s+= " #{loc} #{testloc}"
+      s+= "\t#{loc}\t#{testloc}"
 
       puts s
     end
